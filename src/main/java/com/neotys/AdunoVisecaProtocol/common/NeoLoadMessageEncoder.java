@@ -121,6 +121,9 @@ public class NeoLoadMessageEncoder  {
             deflaterStream.finish();
             serialout.close();
             serialout = null;
+            if(msg==null)
+                System.out.println("ERROR : The msg is null");
+
             String base64Data = StringUtility.wrapText(Base64Utility.encode(bos.toByteArray()), 10000);
             buf.append(base64Data);
         } finally {
@@ -181,6 +184,9 @@ public class NeoLoadMessageEncoder  {
             return new NeoLoadSoapResponse(response,origin,status);
         }
         else
+        {
+            System.out.println("Response is not in SOAP format : "+toParse);
+        }
             return null;
     }
     public NeoloadSoapRequest getReques(byte[] bytes) throws Exception {
@@ -209,6 +215,9 @@ public class NeoLoadMessageEncoder  {
             return new NeoloadSoapRequest(request,origin);
         }
         else
+       {
+           System.out.println("Request is not a SOAP format : "+ toParse);
+       }
             return null;
     }
     public static boolean isSoapLike(String inXMLStr) {

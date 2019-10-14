@@ -24,6 +24,7 @@ public class SoapRequestEncoder implements Encoder {
             messageEncoder.writeMessage(outSt,request.getData());
             return  outSt.toByteArray();
         } catch (IOException e) {
+            System.out.println("Issue to encode the requet "+ e.getMessage());
             e.printStackTrace();
         }
         return new byte[0];
