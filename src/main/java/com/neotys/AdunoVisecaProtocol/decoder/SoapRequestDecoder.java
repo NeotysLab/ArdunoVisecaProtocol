@@ -15,7 +15,7 @@ public class SoapRequestDecoder  implements Decoder {
         try {
             return messageEncoder.getReques(bytes);
         } catch (Exception e) {
-            System.out.println("Issue to decode the requet "+ e.getMessage());
+            System.out.println("Issue to decode  request : "+ bytes.toString()+" the requet "+ e.getMessage());
             e.printStackTrace();
         }
         return null;
