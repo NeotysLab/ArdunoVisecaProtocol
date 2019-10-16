@@ -16,11 +16,17 @@ public class NeoLoadSoapResponse {
         this.data = data;
         this.origin = origin;
         this.status=status;
-        this.type=data.getData().getClass().getSimpleName();
+        if(data.getData() != null)
+            this.type=data.getData().getClass().getSimpleName();
+        else
+            this.type="";
+
         if(data.getException()!=null)
             this.exception=Optional.ofNullable(new NeoLoadExceptionResponse(data.getException()));
         else
             this.exception=Optional.empty();
+
+
     }
 
     public String getStatus() {

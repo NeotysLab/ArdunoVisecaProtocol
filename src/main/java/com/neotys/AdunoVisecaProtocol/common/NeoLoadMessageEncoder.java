@@ -6,6 +6,7 @@ import com.bsiag.scout.shared.proxy.http.*;
 import com.neotys.AdunoVisecaProtocol.datamodel.NeoLoadExceptionResponse;
 import com.neotys.AdunoVisecaProtocol.datamodel.NeoLoadSoapResponse;
 import com.neotys.AdunoVisecaProtocol.datamodel.NeoloadSoapRequest;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -181,6 +182,7 @@ public class NeoLoadMessageEncoder  {
 
 
             HttpProxyHandlerResponse response= (HttpProxyHandlerResponse) readMessage(new ByteArrayInputStream(bytes));
+           // System.out.println("Response decoded :" + response.toString());
             return new NeoLoadSoapResponse(response,origin,status);
         }
         else
@@ -212,6 +214,7 @@ public class NeoLoadMessageEncoder  {
             }
 
             HttpProxyHandlerRequest request= (HttpProxyHandlerRequest) readMessage(new ByteArrayInputStream(bytes));
+         //   System.out.println("Request decoded : "+ request.toString());
             return new NeoloadSoapRequest(request,origin);
         }
         else
